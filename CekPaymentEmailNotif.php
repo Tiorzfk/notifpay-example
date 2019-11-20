@@ -17,7 +17,7 @@
                 $data['nominal'] = $value['donation'];
                 $data['nama_donatur'] = $value['fullname'];
                 $data['nama_bank'] = 'BNI';
-                $donation = $this->callApi("POST" , 'http://localhost:8089/api/checkEmail' , json_encode($data));
+                $donation = $this->callApi("POST" , 'http://192.168.34.4/notifpay-mitra/api/checkEmail' , json_encode($data));
                 $result = json_decode($donation);
 
                 //jika transaksi ditemukan, tampung data ke array
@@ -43,7 +43,7 @@
                 $campaign = Campaigns::find($v->campaigns_id);
                 $dataMessage['no_hp'] = $v->no_hp;
                 $dataMessage['message'] = 'Dear '.$v->fullname.', donasi anda pada campaign '.$campaign->title.' sebesar Rp. '.$v->donation.' berhasil kami konfirmasi. Terimakasih atas donasi anda.';
-                $this->callApi("POST", 'http://localhost:8089/api/sendMessage' , json_encode($dataMessage));
+                $this->callApi("POST", 'http://192.168.34.4/notifpay-mitra/api/sendMessage' , json_encode($dataMessage));
             }
             return response()->json(['status' => 'approved']);
         }else {
