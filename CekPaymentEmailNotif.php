@@ -1,5 +1,5 @@
 <?php
-    function cekApiNotipaySmsNotif()
+    function cekApiNotipayEmailNotif()
     {
         //transaksi yang belum terverifikasi
         //dan filter sesuai bank yang menggunakan email notif
